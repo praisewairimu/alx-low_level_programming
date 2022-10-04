@@ -1,36 +1,27 @@
-#include <stdio.h>                                                                                                                   
+#include <stdio.h>
 
-#include "main.h"                                                                                                                    
 
-                                                                                                                                     
 
-/**                                                                                                                                  
+/**
 
- * main - print the name of the program                                                                                              
+ * main - prints the name number of arguments passed to it
 
- * @argc: Count arguments                                                                                                            
+ * @argc: number of arguments passed to the function
 
- * @argv: Arguments                                                                                                                  
+ * @argv: argument vector of pointers to strings
 
- *                                                                                                                                   
+ *
 
- * Return: Always 0 (Success)                                                                                                        
+ * Return: always 0
 
- */                                                                                                                                  
+ */
 
-                                                                                                                                     
+int main(int argc, char *argv[] __attribute__((unused)))
 
-int main(int argc, char *argv[])                                                                                                     
+{
 
-{                                                                                                                                    
+	printf("%d\n", argc - 1);
 
-(void) argv; /*Ignore argv*/                                                                                                         
-
-printf("%i\n", argc - 1);                                                                                                            
-
-                                                                                                                                     
-
-return (0);                                                                                                                          
+	return (0);
 
 }
-

@@ -1,104 +1,97 @@
+#include <stdio.h>
+
+#include <stdlib.h>
 
 
-#include <stdio.h>                                                                                                                   
 
-#include <stdlib.h>                                                                                                                  
+/**
 
-                                                                                                                                     
+*main - prints the minimum number of coins to make change
 
-/**                                                                                                                                  
+* for an amount of money
 
- * main - function                                                                                                                   
+*@argc: number of arguments
 
- *@argc: length of argv                                                                                                              
+*@argv: array of arguments
 
- *@argv: number of argument                                                                                                          
+*Return: returns 1 if there is an error; else returns 0
 
- *Return: Always 0                                                                                                                   
+*/
 
- */                                                                                                                                  
 
-                                                                                                                                     
 
-int main(int argc, char *argv[])                                                                                                     
+int main(int argc, char *argv[])
 
-{                                                                                                                                    
+{
 
-/*Declaring variables*/                                                                                                              
+int cents, coins = 0;
 
-int position, total, change, aux;                                                                                                    
 
-int coins[] = {25, 10, 5, 2, 1}; /*Array int*/                                                                                       
 
-                                                                                                                                     
+if (argc != 2)
 
-position = total = change = aux = 0;                                                                                                 
+{
 
-                                                                                                                                     
+	printf("Error\n");
 
-if (argc != 2)                                                                                                                       
-
-{                                                                                                                                    
-
-printf("Error\n");                                                                                                                   
-
-return (1);                                                                                                                          
+	return (1);
 
 }
 
-                                                                                                                                     
+cents = atoi(argv[1]);
 
-total = atoi(argv[1]); /*Covert str to int*/                                                                                         
+while (cents > 0)
 
-                                                                                                                                     
+{
 
-if (total <= 0)                                                                                                                      
+	coins++;
 
-{                                                                                                                                    
+	if ((cents - 25) >= 0)
 
-printf("0\n");                                                                                                                       
+	{
 
-return (0);                                                                                                                          
+		cents -= 25;
 
-}                                                                                                                                    
+		continue;
 
-                                                                                                                                     
+	}
 
-/*Declaring While*/                                                                                                                  
+	if ((cents - 10) >= 0)
 
-                                                                                                                                     
+	{
 
-while (coins[position] != '\0')                                                                                                      
+		cents -= 10;
 
-                                                                                                                                     
+		continue;
 
-{                                                                                                                                    
+	}
 
-if (total >= coins[position])                                                                                                        
+	if ((cents - 5) >= 0)
 
-{                                                                                                                                    
+	{
 
-aux = (total / coins[position]);                                                                                                     
+		cents -= 5;
 
-change += aux;                                                                                                                       
+		continue;
 
-total -= coins[position] * aux;                                                                                                      
+	}
 
-}                                                                                                                                    
+	if ((cents - 2) >= 0)
 
-                                                                                                                                     
+	{
 
-position++;
+		cents -= 2;
 
-                                                                                                                                     
+		continue;
 
-}                                                                                                                                    
+	}
 
-                                                                                                                                     
-
-printf("%d\n", change);                                                                                                              
-
-return (0);                                                                                                                          
+	cents--;
 
 }
 
+printf("%d\n", coins);
+
+return (0);
+
+}

@@ -1,46 +1,45 @@
-#include "main.h"                                                                                                                    
+#include <stdio.h>
 
-#include <stdlib.h>                                                                                                                  
+#include <stdlib.h>
 
-#include <stdio.h>                                                                                                                   
+/**
 
-                                                                                                                                     
+ * main - program that prints its name, followed by a new line
 
-/**                                                                                                                                  
+ * @argc: argument that counts argument input
 
- * main - prints the multiplication of two integers                                                                                  
+ * @argv: argument that stores the strings in an array of char* (strings)
 
- * @argc: argument count                                                                                                             
+ * Return: 0
 
- * @argv: argument vector                                                                                                            
+ */
 
- * Return: 0 if true, 1 if false                                                                                                     
+int main(int argc, char *argv[])
 
- */                                                                                                                                  
+{
 
-int main(int argc, char *argv[])                                                                                                     
+	int num_1, num_2, mul;
 
-{                                                                                                                                    
 
-int a, b;                                                                                                                            
 
-if (argc == 3)                                                                                                                       
+	if (argc != 3)
 
-{                                                                                                                                    
+		printf("Error\n");
 
-a = atoi(argv[1]);                                                                                                                   
+	else
 
-b = atoi(argv[2]);                                                                                                                   
+	{
 
-printf("%d\n", a *b);                                                                                                                
+		num_1 = atoi(argv[1]);
 
-return (0);                                                                                                                          
+		num_2 = atoi(argv[2]);
 
-}                                                                                                                                    
+		mul = num_1 * num_2;
 
-printf("Error\n");                                                                                                                   
+		printf("%d\n", mul);
 
-return (1);                                                                                                                          
+	}
+
+	return (0);
 
 }
-
