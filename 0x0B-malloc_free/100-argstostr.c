@@ -4,85 +4,110 @@
 
 /**
 
- * argstostr - Concatenates all arguments of the program into a string;
+*len - returns length of str
 
- *             arguments are separated by a new line in the string.
+*@str: string counted
 
- * @ac: The number of arguments passed to the program.
+*Return: returns the length
 
- * @av: An array of pointers to the arguments.
+*/
 
- *
+int len(char *str)
 
- * Return: If ac == 0, av == NULL, or the function fails - NULL.
+{
 
- *         Otherwise - a pointer to the new string.
+		int len = 0;
 
- */
+
+
+		if (str != NULL)
+
+		{
+
+			while (str[len])
+
+				len++;
+
+		}
+
+	return (len);
+
+}
+
+
+
+/**
+
+* argstostr - a function that concatenates all the arguments of your program
+
+*@ac: count of args passed to the function
+
+*@av:array of arguments
+
+*
+
+*Return: pointer to the new string
+
+*/
+
+
 
 char *argstostr(int ac, char **av)
 
 {
 
-	char *str;
+		char *new_string = NULL;
 
-	int arg, byte, index, size = ac;
-
-
-
-	if (ac == 0 || av == NULL)
-
-		return (NULL);
+		int k = 0, i = ac, j, sum = 0, temp = 0;
 
 
 
-	for (arg = 0; arg < ac; arg++)
+		if (ac == 0 || av == NULL)
 
-	{
-
-		for (byte = 0; av[arg][byte]; byte++)
-
-			size++;
-
-	}
+			return (NULL);
 
 
 
-	str = malloc(sizeof(char) * size + 1);
+		while (ac--)
+
+			sum += (len(av[ac]) + 1);
+
+		new_string = (char *) malloc(sum + 1);
 
 
 
-	if (str == NULL)
+		if (new_string != NULL)
 
-		return (NULL);
+		{
 
+			while (k < i)
 
+			{
 
-	index = 0;
+				for (j = 0; av[k][j] != '\0'; j++)
 
+					new_string[j + temp] = av[k][j];
 
+				new_string[temp + j] = '\n';
 
-	for (arg = 0; arg < ac; arg++)
+				temp += (j + 1);
 
-	{
+				k++;
 
-		for (byte = 0; av[arg][byte]; byte++)
+			}
 
-			str[index++] = av[arg][byte];
+			new_string[temp] = '\0';
 
+		}
 
+		else
 
-		str[index++] = '\n';
+		{
 
-	}
+			return (NULL);
 
+		}
 
-
-	str[size] = '\0';
-
-
-
-	return (str);
+		return (new_string);
 
 }
-

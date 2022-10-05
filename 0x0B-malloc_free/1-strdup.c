@@ -4,21 +4,31 @@
 
 /**
 
-* _strdup -> string duplicator function
+* _strdup - returns a pointer to a newly allocated
 
-* @str: string to be dupliated
+*space in memory, which contains a copy of the
 
-* Return: a string pointer
+*string given as a parameter.
+
+*@str:String to be copied
+
+*
+
+*Return: NULL in case of error, pointer to allocated
+
+*space
 
 */
+
+
 
 char *_strdup(char *str)
 
 {
 
-	int i = 1, j = 0;
+	char *cpy;
 
-	char *s;
+	int index, len;
 
 
 
@@ -26,30 +36,38 @@ char *_strdup(char *str)
 
 		return (NULL);
 
-	while (str[i])
 
-		i++;
 
-	s = (char *)malloc(i * sizeof(char) + 1);
+	for (index = 0; str[index]; index++)
 
-	if (s == NULL)
+		len++;
+
+	cpy = malloc(sizeof(char) * (len + 1));
+
+
+
+	if (cpy == NULL)
 
 		return (NULL);
 
-	while (j < i)
+
+
+	for (index = 0; str[index]; index++)
 
 	{
 
-		s[j] = str[j];
-
-		j++;
+		cpy[index] = str[index];
 
 	}
 
-	s[j] = '\0';
 
-	return (s);
+
+	cpy[len] = '\0';
+
+
+
+	return (cpy);
+
+
 
 }
-
-
